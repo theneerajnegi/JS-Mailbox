@@ -1,30 +1,72 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Gmail Demo</title>
-  <script src='https://kit.fontawesome.com/cdeaf48dcd.js' crossorigin='anonymous'></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Outlook Inbox</title>
   <style>
     body {
-      background: #000;
-      color: #FFF;
-      overflow: hidden;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f2f1;
+      color: #333;
     }
-
-    #app-root{
-      height: calc(100% - 80px);
-    }
-
     header {
-      height: 20px;
-      text-align: center;
-      padding: 10px;
-      background: #19a1e3;
+      background: #0078d4;
+      color: white;
+      padding: 10px 15px;
+      font-size: 20px;
     }
-    footer {
-      height: 20px;
-      text-align: center;
+    .inbox {
       padding: 10px;
-      background: #19a1e3;
-      position: absolute;
-      bottom: 0;
+    }
+    .email {
+      background: white;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-left: 5px solid #0078d4;
+      box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    }
+    .email h4 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .email p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .compose-btn {
+      background: #0078d4;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>Outlook Mail</header>
+  <button class="compose-btn">+ New Message</button>
+  <div class="inbox">
+    <div class="email">
+      <h4>Microsoft Account Team</h4>
+      <p>Security alert: New sign-in from iPhone</p>
+    </div>
+    <div class="email">
+      <h4>Amazon.in</h4>
+      <p>Your order has been shipped!</p>
+    </div>
+    <div class="email">
+      <h4>LinkedIn</h4>
+      <p>You have 3 new connection requests</p>
+    </div>
+    <div class="email">
+      <h4>Paytm</h4>
+      <p>Get 20% cashback on your next payment</p>
+    </div>
+  </div>
+</body>
+</html>
