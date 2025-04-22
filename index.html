@@ -69,6 +69,19 @@
       border-radius: 3px;
       cursor: pointer;
     }
+    .attachments {
+      margin-top: 10px;
+    }
+    .attachments ul {
+      list-style: none;
+      padding: 0;
+    }
+    .attachments li {
+      background: #f1f1f1;
+      padding: 5px;
+      margin-bottom: 5px;
+      border-radius: 3px;
+    }
   </style>
 </head>
 <body>
@@ -94,6 +107,11 @@
     <input id="fromField" />
     <input id="subjectField" />
     <textarea id="bodyField" rows="10"></textarea>
+    <div class="attachments">
+      <label for="fileInput">Attach a file:</label>
+      <input type="file" id="fileInput" multiple />
+      <ul id="attachmentList"></ul>
+    </div>
     <div class="actions">
       <button onclick="reply()">Reply</button>
       <button onclick="backToInbox()">Back</button>
@@ -107,6 +125,8 @@
       document.getElementById('fromField').value = from;
       document.getElementById('subjectField').value = subject;
       document.getElementById('bodyField').value = body;
+      document.getElementById('attachmentList').innerHTML = '';
+      document.getElementById('fileInput').value = '';
     }
 
     function backToInbox() {
@@ -117,6 +137,16 @@
     function reply() {
       alert('This would open a reply editor (you can customize this too).');
     }
+
+    document.getElementById('fileInput').addEventListener('change', function() {
+      const list = document.getElementById('attachmentList');
+      list.innerHTML = '';
+      for (let i = 0; i < this.files.length; i++) {
+        const li = document.createElement('li');
+        li.textContent = this.files[i].name;
+        list.appendChild(li);
+      }
+    });
   </script>
 </body>
 </html>
