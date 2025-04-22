@@ -3,25 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Outlook Clone</title>
+  <title>Outlook Inbox Clone</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="topbar">
-    <span>Outlook</span>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-  </div>
-  <div class="sidebar">
-    <ul>
-      <li>Inbox</li>
-      <li>Sent</li>
-      <li>Drafts</li>
-      <li>Trash</li>
-    </ul>
-  </div>
-  <div class="content">
-    <div class="email-list" id="emailList"></div>
-    <button class="new-email-btn" onclick="openCompose()">+ New Email</button>
+  <header class="header">
+    <span class="logo">Outlook</span>
+    <div class="actions">
+      <input type="text" placeholder="Search" />
+      <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="sidebar">
+      <ul>
+        <li>Inbox</li>
+        <li>Sent</li>
+        <li>Drafts</li>
+        <li>Trash</li>
+      </ul>
+    </nav>
+
+    <main class="main">
+      <div id="emailList" class="email-list"></div>
+      <button class="compose-btn" onclick="openCompose()">+ New Email</button>
+    </main>
   </div>
 
   <div id="composeModal" class="modal">
@@ -29,7 +36,7 @@
       <span class="close" onclick="closeCompose()">&times;</span>
       <input type="text" id="to" placeholder="To" />
       <input type="text" id="subject" placeholder="Subject" />
-      <textarea id="body" placeholder="Body"></textarea>
+      <textarea id="body" placeholder="Message..."></textarea>
       <input type="file" id="attachment" />
       <button onclick="sendEmail()">Send</button>
     </div>
