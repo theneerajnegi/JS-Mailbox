@@ -3,150 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Outlook Inbox</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f3f2f1;
-      color: #333;
-    }
-    header {
-      background: #0078d4;
-      color: white;
-      padding: 10px 15px;
-      font-size: 20px;
-    }
-    .compose-btn {
-      background: #0078d4;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      width: 100%;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .inbox, .email-view {
-      padding: 10px;
-    }
-    .email {
-      background: white;
-      padding: 12px;
-      margin-bottom: 10px;
-      border-left: 5px solid #0078d4;
-      box-shadow: 0 0 3px rgba(0,0,0,0.1);
-      cursor: pointer;
-    }
-    .email h4 {
-      margin: 0;
-      font-size: 16px;
-    }
-    .email p {
-      margin: 5px 0 0;
-      font-size: 14px;
-      color: #555;
-    }
-    .email-view {
-      display: none;
-      background: white;
-      padding: 15px;
-      box-shadow: 0 0 3px rgba(0,0,0,0.2);
-    }
-    .email-view input, .email-view textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .actions button {
-      background: #0078d4;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      margin-right: 10px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-    .attachments {
-      margin-top: 10px;
-    }
-    .attachments ul {
-      list-style: none;
-      padding: 0;
-    }
-    .attachments li {
-      background: #f1f1f1;
-      padding: 5px;
-      margin-bottom: 5px;
-      border-radius: 3px;
-    }
-  </style>
+  <title>Outlook Mail</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>Outlook Mail</header>
-  <button class="compose-btn">+ New Message</button>
+  <div class="header">Outlook Mail</div>
+  <div class="toolbar">
+    <button onclick="openCompose()">+ New Message</button>
+  </div>
+  <div id="inbox" class="inbox">
+    <!-- Email list rendered here -->
+  </div>
 
-  <div class="inbox">
-    <div class="email" onclick="openEmail('Microsoft Account Team', 'Security alert: New sign-in from iPhone', 'We noticed a new sign-in to your Microsoft account from an iPhone.')">
-      <h4>Microsoft Account Team</h4>
-      <p>Security alert: New sign-in from iPhone</p>
-    </div>
-    <div class="email" onclick="openEmail('Amazon.in', 'Your order has been shipped!', 'Your package has left the warehouse and is on its way.')">
-      <h4>Amazon.in</h4>
-      <p>Your order has been shipped!</p>
-    </div>
-    <div class="email" onclick="openEmail('LinkedIn', 'You have 3 new connection requests', 'Click here to view your requests.')">
-      <h4>LinkedIn</h4>
-      <p>You have 3 new connection requests</p>
+  <!-- Compose Modal -->
+  <div id="composeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCompose()">&times;</span>
+      <input type="text" id="to" placeholder="To" />
+      <input type="text" id="subject" placeholder="Subject" />
+      <textarea id="body" placeholder="Body"></textarea>
+      <input type="file" id="attachment" />
+      <button onclick="sendEmail()">Send</button>
     </div>
   </div>
 
-  <div class="email-view" id="emailView">
-    <input id="fromField" />
-    <input id="subjectField" />
-    <textarea id="bodyField" rows="10"></textarea>
-    <div class="attachments">
-      <label for="fileInput">Attach a file:</label>
-      <input type="file" id="fileInput" multiple />
-      <ul id="attachmentList"></ul>
-    </div>
-    <div class="actions">
-      <button onclick="reply()">Reply</button>
-      <button onclick="backToInbox()">Back</button>
-    </div>
-  </div>
-
-  <script>
-    function openEmail(from, subject, body) {
-      document.querySelector('.inbox').style.display = 'none';
-      document.getElementById('emailView').style.display = 'block';
-      document.getElementById('fromField').value = from;
-      document.getElementById('subjectField').value = subject;
-      document.getElementById('bodyField').value = body;
-      document.getElementById('attachmentList').innerHTML = '';
-      document.getElementById('fileInput').value = '';
-    }
-
-    function backToInbox() {
-      document.querySelector('.inbox').style.display = 'block';
-      document.getElementById('emailView').style.display = 'none';
-    }
-
-    function reply() {
-      alert('This would open a reply editor (you can customize this too).');
-    }
-
-    document.getElementById('fileInput').addEventListener('change', function() {
-      const list = document.getElementById('attachmentList');
-      list.innerHTML = '';
-      for (let i = 0; i < this.files.length; i++) {
-        const li = document.createElement('li');
-        li.textContent = this.files[i].name;
-        list.appendChild(li);
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
