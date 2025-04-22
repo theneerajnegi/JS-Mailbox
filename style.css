@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f3f3f3;
+}
+.header {
+  background: #0078d4;
+  color: white;
+  padding: 12px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.toolbar {
+  padding: 10px;
+  background: #e6f0fa;
+}
+.inbox {
+  padding: 10px;
+}
+.email {
+  background: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 4px solid #0078d4;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 999;
+  padding: 15px;
+}
+.modal-content input, .modal-content textarea {
+  width: 100%;
+  margin: 10px 0;
+}
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
