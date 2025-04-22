@@ -1,28 +1,46 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #f3f3f3;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  color: #000;
 }
-.header {
-  background: #0078d4;
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #f3f3f3;
+}
+.topbar {
+  background-color: #0078d4;
   color: white;
-  padding: 12px;
-  font-size: 24px;
-  font-weight: bold;
-}
-.toolbar {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.sidebar {
+  width: 200px;
+  float: left;
   background: #e6f0fa;
-}
-.inbox {
+  height: 100vh;
   padding: 10px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar li {
+  margin: 10px 0;
+}
+.content {
+  margin-left: 200px;
+  padding: 20px;
 }
 .email {
   background: white;
   margin-bottom: 10px;
   padding: 10px;
   border-left: 4px solid #0078d4;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+.dark-mode .email {
+  background: #2c2c2c;
 }
 .modal {
   display: none;
@@ -31,16 +49,14 @@ body {
   left: 10%;
   width: 80%;
   background: white;
-  border: 1px solid #ccc;
-  z-index: 999;
+  z-index: 10;
   padding: 15px;
+  box-shadow: 0 0 10px #000;
 }
-.modal-content input, .modal-content textarea {
-  width: 100%;
-  margin: 10px 0;
+.dark-mode .modal {
+  background: #333;
+  color: white;
 }
-.close {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
+.new-email-btn {
+  margin-top: 20px;
 }
