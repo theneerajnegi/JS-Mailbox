@@ -17,7 +17,16 @@
       padding: 10px 15px;
       font-size: 20px;
     }
-    .inbox {
+    .compose-btn {
+      background: #0078d4;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .inbox, .email-view {
       padding: 10px;
     }
     .email {
@@ -26,6 +35,7 @@
       margin-bottom: 10px;
       border-left: 5px solid #0078d4;
       box-shadow: 0 0 3px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
     .email h4 {
       margin: 0;
@@ -36,13 +46,27 @@
       font-size: 14px;
       color: #555;
     }
-    .compose-btn {
+    .email-view {
+      display: none;
+      background: white;
+      padding: 15px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    }
+    .email-view input, .email-view textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .actions button {
       background: #0078d4;
       color: white;
-      padding: 10px 15px;
       border: none;
-      width: 100%;
-      font-size: 16px;
+      padding: 8px 12px;
+      margin-right: 10px;
+      border-radius: 3px;
       cursor: pointer;
     }
   </style>
@@ -50,23 +74,49 @@
 <body>
   <header>Outlook Mail</header>
   <button class="compose-btn">+ New Message</button>
+
   <div class="inbox">
-    <div class="email">
+    <div class="email" onclick="openEmail('Microsoft Account Team', 'Security alert: New sign-in from iPhone', 'We noticed a new sign-in to your Microsoft account from an iPhone.')">
       <h4>Microsoft Account Team</h4>
       <p>Security alert: New sign-in from iPhone</p>
     </div>
-    <div class="email">
+    <div class="email" onclick="openEmail('Amazon.in', 'Your order has been shipped!', 'Your package has left the warehouse and is on its way.')">
       <h4>Amazon.in</h4>
       <p>Your order has been shipped!</p>
     </div>
-    <div class="email">
+    <div class="email" onclick="openEmail('LinkedIn', 'You have 3 new connection requests', 'Click here to view your requests.')">
       <h4>LinkedIn</h4>
       <p>You have 3 new connection requests</p>
     </div>
-    <div class="email">
-      <h4>Paytm</h4>
-      <p>Get 20% cashback on your next payment</p>
+  </div>
+
+  <div class="email-view" id="emailView">
+    <input id="fromField" />
+    <input id="subjectField" />
+    <textarea id="bodyField" rows="10"></textarea>
+    <div class="actions">
+      <button onclick="reply()">Reply</button>
+      <button onclick="backToInbox()">Back</button>
     </div>
   </div>
+
+  <script>
+    function openEmail(from, subject, body) {
+      document.querySelector('.inbox').style.display = 'none';
+      document.getElementById('emailView').style.display = 'block';
+      document.getElementById('fromField').value = from;
+      document.getElementById('subjectField').value = subject;
+      document.getElementById('bodyField').value = body;
+    }
+
+    function backToInbox() {
+      document.querySelector('.inbox').style.display = 'block';
+      document.getElementById('emailView').style.display = 'none';
+    }
+
+    function reply() {
+      alert('This would open a reply editor (you can customize this too).');
+    }
+  </script>
 </body>
 </html>
